@@ -17,24 +17,6 @@ pager: false
   </div>
 </div>
 
-<div class="grid grid-cols-3" style="grid-auto-rows: 180px;">
-  <div class="card">
-    <h3>The Evidence</h3>
-    <p>Explore global temperature anomalies and Arctic sea ice decline</p>
-    <a href="/global-temperature-dashboard">View visualizations →</a>
-  </div>
-  <div class="card">
-    <h3>The Consequences</h3>
-    <p>Examine sea level rise, extreme weather events, and migration patterns</p>
-    <p><em>Coming soon</em></p>
-  </div>
-  <div class="card">
-    <h3>The Accountability</h3>
-    <p>Understand carbon budget and carbon footprints across countries</p>
-    <p><em>Coming soon</em></p>
-  </div>
-</div>
-
 ---
 
 ## Available Visualizations

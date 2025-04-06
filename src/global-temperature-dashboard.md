@@ -9,7 +9,8 @@ pager: false
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
   <div>
     <a href="/" style="text-decoration: none; color: #666; margin-right: 1rem;">Home</a>
-    <a href="/arctic-sea-ice-dashboard" style="text-decoration: none; color: #666;">Arctic Sea Ice</a>
+    <a href="/arctic-sea-ice-dashboard" style="text-decoration: none; color: #666; margin-right: 1rem;">Arctic Sea Ice</a>
+    <a href="/extreme-weather-dashboard" style="text-decoration: none; color: #666;">Extreme Weather</a>
   </div>
 </div>
 

@@ -9,12 +9,15 @@ pager: false
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
   <div>
     <a href="/" style="text-decoration: none; color: #666; margin-right: 1rem;">Home</a>
+    <a href="/global-temperature-dashboard" style="text-decoration: none; color: #666; font-weight: bold; border-bottom: 2px solid #666; margin-right: 1rem;">Global Temperature</a>
     <a href="/arctic-sea-ice-dashboard" style="text-decoration: none; color: #666; margin-right: 1rem;">Arctic Sea Ice</a>
     <a href="/extreme-weather-dashboard" style="text-decoration: none; color: #666;">Extreme Weather</a>
   </div>
 </div>
 
 # Global Temperature Anomalies 🌡️
+
+This dashboard presents global temperature anomalies, which show how Earth's temperature has changed compared to a baseline period. Values represent deviations from the 1951-1980 average temperature in degrees Celsius. Positive values (red) indicate warming, while negative values (blue) show cooling.
 
 <!-- Load and transform the data -->
 
@@ -67,18 +70,22 @@ const maxGlobalTemp = d3.max(globalValues);
   <div class="card">
     <h2>Data Time Range</h2>
     <span class="big">${d3.min(years)} - ${d3.max(years)}</span>
+    <p><small>Period covered by this dataset</small></p>
   </div>
   <div class="card">
     <h2>Recent Global Average</h2>
     <span class="big">${recentAverage}°C</span>
+    <p><small>Average temperature anomaly since 2010</small></p>
   </div>
   <div class="card">
-    <h2>Pre-Industrial</h2>
+    <h2>Pre-Industrial Average</h2>
     <span class="big">${preindustrialAverage}°C</span>
+    <p><small>Average temperature anomaly before 1900</small></p>
   </div>
   <div class="card">
-    <h2>Warmest Year</h2>
+    <h2>Warmest Year on Record</h2>
     <span class="big">${maxYear}: ${maxTemp}°C</span>
+    <p><small>Highest annual temperature anomaly</small></p>
   </div>
 </div>
 
@@ -90,7 +97,7 @@ function temperatureTimeline(data, {width} = {}) {
   const maxAbs = Math.max(Math.abs(minTemp), Math.abs(maxGlobalTemp));
   
   return Plot.plot({
-    title: "Global Temperature Anomalies Over Time",
+    title: "Global Temperature Anomalies: 1880-Present (1951-1980 Baseline)",
     width,
     height: 300,
     y: {
@@ -99,7 +106,8 @@ function temperatureTimeline(data, {width} = {}) {
       domain: [-1, 1.5]
     },
     x: {
-      label: "Year"
+      label: "Year",
+      tickFormat: d => d.toString()
     },
     color: {
       type: "diverging",
@@ -132,6 +140,7 @@ function temperatureTimeline(data, {width} = {}) {
 <div class="grid grid-cols-1">
   <div class="card">
     ${resize((width) => temperatureTimeline(temperatureData, {width}))}
+    <p><small>This chart shows how global average temperatures have changed over time relative to the 1951-1980 baseline period. The trend line clearly shows the warming pattern, especially since the 1970s. Each point represents an annual average.</small></p>
   </div>
 </div>
 
@@ -158,7 +167,7 @@ function hemisphereComparison(data, {width} = {}) {
   });
 
   return Plot.plot({
-    title: "Northern vs Southern Hemisphere Temperature Anomalies",
+    title: "Northern vs Southern Hemisphere Temperature Changes (1951-1980 Baseline)",
     width,
     height: 300,
     y: {
@@ -167,7 +176,8 @@ function hemisphereComparison(data, {width} = {}) {
       domain: [-0.8, 1.5]
     },
     x: {
-      label: "Year"
+      label: "Year",
+      tickFormat: d => d.toString()
     },
     color: {
       legend: true,
@@ -190,6 +200,7 @@ function hemisphereComparison(data, {width} = {}) {
 <div class="grid grid-cols-1">
   <div class="card">
     ${resize((width) => hemisphereComparison(temperatureData, {width}))}
+    <p><small>This comparison shows how warming patterns differ between hemispheres. The Northern Hemisphere (red) has generally experienced more pronounced warming than the Southern Hemisphere (blue), likely due to greater land mass and human activity in the north.</small></p>
   </div>
 </div>
 
@@ -256,10 +267,12 @@ function plotTrendMap(data, valueColumn, title, {width} = {}) {
 
 <div class="grid grid-cols-1">
   <div class="card">
-    ${resize((width) => plotTrendMap(trendData, "trend_1901_2023_C_decade", "1901-2023", {width}))}
+    ${resize((width) => plotTrendMap(trendData, "trend_1901_2023_C_decade", "Long-term Temperature Trends: 1901-2023", {width}))}
+    <p><small>This map shows the rate of temperature change (°C per decade) over the long term (1901-2023). Red areas have warmed more rapidly, while blue areas have warmed more slowly or cooled.</small></p>
   </div>
   <div class="card">
-    ${resize((width) => plotTrendMap(trendData, "trend_1994_2023_C_decade", "1994-2023", {width}))}
+    ${resize((width) => plotTrendMap(trendData, "trend_1994_2023_C_decade", "Recent Temperature Trends: 1994-2023", {width}))}
+    <p><small>This map shows more recent temperature trends (1994-2023), revealing areas experiencing the most rapid warming in recent decades. Note the accelerated warming in the Arctic region.</small></p>
   </div>
 </div>
 
@@ -287,12 +300,13 @@ function temperatureDistribution(data, {width} = {}) {
   const maxAbsMedian = Math.max(Math.abs(d3.min(medians)), Math.abs(d3.max(medians)));
   
   return Plot.plot({
-    title: "Temperature Distribution by Decade",
+    title: "Temperature Distribution by Decade (1951-1980 Baseline)",
     width,
     height: 300,
     x: {
       domain: decades.map(d => d.decade),
-      label: null
+      label: null,
+      tickFormat: d => d.toString()
     },
     y: {
       grid: true,
@@ -326,6 +340,7 @@ function temperatureDistribution(data, {width} = {}) {
 <div class="grid grid-cols-1">
   <div class="card">
     ${resize((width) => temperatureDistribution(temperatureData, {width}))}
+    <p><small>This box plot shows how temperature anomalies have been distributed within each decade. The boxes show the interquartile range (middle 50% of values), with the line representing the median temperature anomaly. The shift toward warmer temperatures in recent decades is clearly visible.</small></p>
   </div>
 </div>
 

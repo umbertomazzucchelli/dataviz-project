@@ -9,7 +9,9 @@ pager: false
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
   <div>
     <a href="/" style="text-decoration: none; color: #666; margin-right: 1rem;">Home</a>
-    <a href="/global-temperature-dashboard" style="text-decoration: none; color: #666;">Global Temperature</a>
+    <a href="/global-temperature-dashboard" style="text-decoration: none; color: #666; margin-right: 1rem;">Global Temperature</a>
+    <a href="/arctic-sea-ice-dashboard" style="text-decoration: none; color: #666; font-weight: bold; border-bottom: 2px solid #666; margin-right: 1rem;">Arctic Sea Ice</a>
+    <a href="/extreme-weather-dashboard" style="text-decoration: none; color: #666;">Extreme Weather</a>
   </div>
 </div>
 
@@ -203,7 +205,8 @@ const iceFreeYear = currentYear + (yearsToIceFree > 0 ? yearsToIceFree : 0);
 ```js
 function iceExtentTimeline(data, {width} = {}) {
   return Plot.plot({
-    title: "September Arctic Sea Ice Extent (Annual Minimum)",
+    title: "Arctic September Sea Ice Extent (1979-Present)",
+    subtitle: "Annual minimum showing long-term decline and record low years",
     width,
     height: 400,
     y: {
@@ -213,7 +216,8 @@ function iceExtentTimeline(data, {width} = {}) {
     },
     x: {
       label: "Year",
-      domain: [1979, currentYear + 1] // Add a bit of padding on the right
+      domain: [1979, currentYear + 1], // Add a bit of padding on the right
+      tickFormat: d => d.toString() // Format years without commas
     },
     color: {
       type: "linear",
@@ -302,6 +306,7 @@ function iceExtentTimeline(data, {width} = {}) {
 <div class="grid grid-cols-1">
   <div class="card">
     ${resize((width) => iceExtentTimeline(septemberTransformed, {width}))}
+    <p><small>This chart tracks the September sea ice extent (annual minimum) since satellite monitoring began in 1979. The dotted line shows the linear trend of decline, while the red point highlights the record minimum year. The 1 million km² threshold represents the commonly accepted definition of an "ice-free" Arctic Ocean.</small></p>
   </div>
 </div>
 
@@ -343,7 +348,8 @@ function monthlyComparison({width} = {}) {
   });
   
   return Plot.plot({
-    title: "Arctic Sea Ice Extent by Month - Comparing Time Periods",
+    title: "Monthly Sea Ice Extent: Comparing Three Time Periods",
+    subtitle: "Showing the seasonal cycle and how it has changed over time",
     width,
     height: 400,
     x: {
@@ -403,6 +409,7 @@ function monthlyComparison({width} = {}) {
 <div class="grid grid-cols-1">
   <div class="card">
     ${resize((width) => monthlyComparison({width}))}
+    <p><small>This chart compares the average sea ice extent for each month across three time periods: 1979-1989 (blue), 2000-2010 (yellow), and 2015-2023 (red). The natural cycle shows maximum ice in March and minimum in September, with significant decline across all months in recent decades. The greatest losses have occurred during summer and fall months.</small></p>
   </div>
 </div>
 
@@ -508,8 +515,8 @@ function arcticIceVisualization({width} = {}) {
   } = generateIceExtentPolygons();
   
   return Plot.plot({
-    title: "Arctic Sea Ice Extent Comparison (Data-Based Approximation)",
-    subtitle: "September Ice Extent Boundary Approximation - Based on Average Extent Data",
+    title: "Arctic Sea Ice Extent: Geographic Comparison of Historical Changes",
+    subtitle: "September average ice extent boundary approximation (1979-1989 vs 2015-2023)",
     width,
     height: width * 0.4, // Aspect ratio suitable for polar projection
     projection: {
@@ -530,15 +537,6 @@ function arcticIceVisualization({width} = {}) {
       
       // Add graticule (grid lines)
       Plot.graticule({stroke: "lightgray", strokeOpacity: 0.5}),
-      
-      // Draw the Arctic Circle
-      Plot.line(arcticCircle, {
-        x: "lon",
-        y: "lat",
-        stroke: "#666",
-        strokeWidth: 1,
-        strokeDasharray: "4,4"
-      }),
       
       // Add land features
       Plot.geo(arcticLand, {
@@ -606,25 +604,10 @@ function arcticIceVisualization({width} = {}) {
 <div class="grid grid-cols-1">
   <div class="card">
     ${resize((width) => arcticIceVisualization({width}))}
+    <p><small>This map visualizes the geographic extent of Arctic sea ice during September (annual minimum) by comparing the average extent from 1979-1989 (blue line) to 2015-2023 (red line). The visualization shows how the ice edge has retreated northward, opening previously ice-covered waters along the coastlines of Russia, Canada, and Alaska. This spatial perspective illustrates the dramatic reduction in ice coverage that affects navigation, wildlife habitats, and indigenous communities.</small></p>
   </div>
 </div>
 
-## Consequences of Arctic Sea Ice Loss
-
-### Ecosystem Impacts
-The rapid decline of Arctic sea ice threatens the entire Arctic ecosystem. Species like polar bears, walruses, and ice seals depend on sea ice for hunting, resting, and breeding. As their habitat literally melts away, these species face increasing challenges to survival.
-
-### Climate Feedback Loops
-Sea ice has a bright surface that reflects 80% of incoming solar radiation back to space. As ice melts, it exposes the darker ocean surface which absorbs 90% of solar radiation, accelerating warming in a dangerous feedback loop called the "ice-albedo feedback."
-
-### Weather Pattern Changes
-The loss of Arctic sea ice is changing weather patterns across the Northern Hemisphere. Studies link Arctic warming to more persistent weather patterns that can lead to extreme events like heatwaves, cold spells, and flooding.
-
-### Coastal Communities
-Indigenous communities in the Arctic have relied on sea ice for transportation, hunting, and cultural practices for thousands of years. The loss of sea ice threatens their way of life and food security.
-
-### Connection to Sea Level Rise
-While melting sea ice doesn't directly raise sea levels (like ice floating in a glass of water), the warming that causes sea ice loss also accelerates the melting of land-based ice sheets in Greenland and Antarctica, which does contribute significantly to sea level rise.
 
 ## Data Sources and Citations
 

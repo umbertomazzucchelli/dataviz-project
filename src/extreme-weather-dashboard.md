@@ -67,37 +67,37 @@ const stormLocations = [
 // Also load details files for better data completeness
 const stormDetails = [
   // 1950s
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1951_c20250401.csv"),
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1955_c20250401.csv"),
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1959_c20250401.csv"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1951_c20250401.csv.gz"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1955_c20250401.csv.gz"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1959_c20250401.csv.gz"),
   // 1960s
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1960_c20250401.csv"),
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1965_c20250401.csv"),
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1969_c20250401.csv"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1960_c20250401.csv.gz"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1965_c20250401.csv.gz"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1969_c20250401.csv.gz"),
   // 1970s
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1970_c20250401.csv"),
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1975_c20250401.csv"),
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1979_c20250401.csv"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1970_c20250401.csv.gz"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1975_c20250401.csv.gz"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1979_c20250401.csv.gz"),
   // 1980s
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1980_c20250401.csv"),
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1985_c20250401.csv"),
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1989_c20250401.csv"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1980_c20250401.csv.gz"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1985_c20250401.csv.gz"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1989_c20250401.csv.gz"),
   // 1990s
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1990_c20250401.csv"),
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1995_c20250401.csv"),
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1999_c20250401.csv"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1990_c20250401.csv.gz"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1995_c20250401.csv.gz"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d1999_c20250401.csv.gz"),
   // 2000s
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2000_c20250401.csv"),
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2005_c20250401.csv"),
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2009_c20250401.csv"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2000_c20250401.csv.gz"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2005_c20250401.csv.gz"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2009_c20250401.csv.gz"),
   // 2010s
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2010_c20250401.csv"),
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2015_c20250401.csv"),
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2019_c20250401.csv"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2010_c20250401.csv.gz"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2015_c20250401.csv.gz"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2019_c20250401.csv.gz"),
   // 2020s
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2020_c20240620.csv"),
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2022_c20250401.csv"),
-  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2024_c20250401.csv")
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2020_c20240620.csv.gz"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2022_c20250401.csv.gz"),
+  FileAttachment("data/stormEvents/StormEvents_details-ftp_v1.0_d2024_c20250401.csv.gz")
 ];
 
 // Load fatality data for richer analysis
@@ -176,6 +176,10 @@ function isGzipped(path) {
 // Utility function to decompress and parse a gzipped CSV file
 async function loadCompressedCSV(fileAttachment) {
   try {
+    // Get the file path for logging and potential fetch fallback
+    const filePath = getFileAttachmentName(fileAttachment);
+    console.log(`Attempting to load compressed CSV: ${filePath}`);
+    
     let compressedBuffer;
     
     // Try to get the file as an array buffer, falling back to blob if necessary
@@ -194,14 +198,81 @@ async function loadCompressedCSV(fileAttachment) {
       throw new Error("FileAttachment object doesn't provide a suitable method to access raw data");
     }
     
-    // Decompress using pako
-    const decompressedData = inflate(new Uint8Array(compressedBuffer));
-    
-    // Convert to text
-    const text = new TextDecoder().decode(decompressedData);
-    
-    // Parse CSV
-    return csvParse(text);
+    try {
+      // Make sure we're working with a Uint8Array for pako
+      const uint8Array = new Uint8Array(compressedBuffer);
+      
+      // Log some info about the compressed data for debugging
+      console.log(`Compressed data length: ${uint8Array.length} bytes`);
+      
+      // Try various decompression methods
+      let decompressedData;
+      let text;
+      
+      try {
+        // First try pako inflate without any special options
+        decompressedData = inflate(uint8Array);
+        text = new TextDecoder().decode(decompressedData);
+        console.log("Decompression successful with pako's inflate");
+      } catch (pakoError) {
+        console.warn("Pako inflate failed, trying with windowBits: 15", pakoError);
+        
+        try {
+          // Try with explicit windowBits
+          decompressedData = inflate(uint8Array, { windowBits: 15 });
+          text = new TextDecoder().decode(decompressedData);
+          console.log("Decompression successful with pako's inflate with windowBits: 15");
+        } catch (windowBitsError) {
+          console.warn("Pako inflate with windowBits failed", windowBitsError);
+          
+          // Try alternative: direct CSV parsing
+          try {
+            console.log("Trying direct CSV parsing as fallback...");
+            return await fileAttachment.csv();
+          } catch (csvError) {
+            console.warn("Direct CSV parsing failed too", csvError);
+            
+            // Last resort: try to download the file directly using fetch
+            if (filePath) {
+              console.log("Attempting to use fetch API to download and process the file");
+              try {
+                // Construct a relative URL to the data file
+                const dataUrl = filePath.startsWith("/") ? filePath : `/${filePath}`;
+                console.log(`Fetching from URL: ${dataUrl}`);
+                
+                const response = await fetch(dataUrl);
+                if (!response.ok) throw new Error(`Fetch failed with status: ${response.status}`);
+                
+                const buffer = await response.arrayBuffer();
+                // Try to decompress with pako again
+                const decompressed = inflate(new Uint8Array(buffer));
+                const fetchText = new TextDecoder().decode(decompressed);
+                console.log("Fetch and decompress successful");
+                return csvParse(fetchText);
+              } catch (fetchError) {
+                console.error("Fetch attempt also failed:", fetchError);
+                throw fetchError;
+              }
+            } else {
+              throw windowBitsError;
+            }
+          }
+        }
+      }
+      
+      // Check if we have actual CSV data
+      if (!text.includes(',')) {
+        console.error("Decompressed data doesn't appear to be CSV (no commas found)");
+        console.log("First 100 chars:", text.substring(0, 100));
+        throw new Error("Decompressed data is not in CSV format");
+      }
+      
+      // Parse CSV
+      return csvParse(text);
+    } catch (decompressError) {
+      console.error("All decompression attempts failed:", decompressError);
+      throw decompressError;
+    }
   } catch (error) {
     console.error("Error decompressing or parsing CSV:", error);
     throw error;
@@ -268,17 +339,32 @@ async function processDetailsData() {
                        1980, 1985, 1989, 1990, 1995, 1999, 2000, 2005, 2009,
                        2010, 2015, 2019, 2020, 2022, 2024];
   
-  // Process each year's details data - details files are not gzipped in our case
+  // Process each year's details data
   for (let i = 0; i < stormDetails.length; i++) {
     try {
       const year = detailYears[i];
       let detailsData;
       
       try {
-        // Try to load details data
-        detailsData = await stormDetails[i].csv();
+        // Try to load details data - check if gzipped
+        const fileAttachment = stormDetails[i];
+        const filePath = getFileAttachmentName(fileAttachment);
+        
+        console.log(`Loading details data for ${year}, file: ${filePath}`);
+        
+        if (isGzipped(filePath)) {
+          // Handle gzipped file
+          console.log(`File ${filePath} is gzipped, using decompression`);
+          detailsData = await loadCompressedCSV(fileAttachment);
+        } else {
+          // Use regular csv parsing for non-gzipped files
+          console.log(`File ${filePath} is not gzipped, using direct CSV parsing`);
+          detailsData = await fileAttachment.csv();
+        }
+        
+        console.log(`Successfully loaded details data for ${year}: ${detailsData.length} records`);
       } catch (error) {
-        console.log(`Error loading details data for ${year}: ${error.message}`);
+        console.error(`Error loading details data for ${year}:`, error);
         detailsData = []; // Set to empty array if file doesn't exist
       }
       
@@ -832,7 +918,8 @@ function stormEventTimeline(data, {width} = {}) {
   const filteredData = stackData.filter(d => sortedTypes.includes(d.type));
   
   return Plot.plot({
-    title: "Storm Events by Type Over Time",
+    title: "Frequency of Extreme Weather Events by Type (1951-2024)",
+    subtitle: "Showing the eight most common event types recorded in the NOAA database",
     width,
     height: 500,
     x: {
@@ -1185,7 +1272,8 @@ function stormCostsTimeline(casualties, damages, {width} = {}) {
   }).sort((a, b) => a.year - b.year);
   
   return Plot.plot({
-    title: "Annual Human Impact of Extreme Weather",
+    title: "Economic and Human Costs of Extreme Weather Events (1951-2024)",
+    subtitle: "Annual property damage (bars) and fatalities (red line) from severe weather",
     width,
     height: 500,
     marginRight: 120,
@@ -2106,6 +2194,7 @@ const precipStats = {
   <div class="card">
     <h2>Historical Comparison: Storm Event Frequency (1950-2024)</h2>
     ${resize((width) => seventyYearTrendChart(allStormData, {width: width}))}
+    <p><small>This chart shows how the frequency of extreme weather events has changed over seven decades. The blue bars represent the average number of recorded events per year in each decade. The red line connects the data points and shows the trend across time, with percentage changes between consecutive decades indicated above the line. Note the significant increase in recorded events since the 1990s due to both improved monitoring technology and increasing event frequency.</small></p>
   </div>
 </div>
 
@@ -2113,6 +2202,7 @@ const precipStats = {
   <div class="card">
     <h2>Past vs Present: Event Type Comparison</h2>
     ${resize((width) => historicalComparisonChart(pastEvents, presentEvents, {width: width}))}
+    <p><small>This comparison shows how the frequency of different types of extreme weather events has changed between two time periods (1970-1999 vs 2000-2024). The percentage values (*) indicate the normalized change between periods, adjusted for the total number of events in each period. This normalization provides a fairer comparison by accounting for increased weather monitoring and reporting over time. Positive values (red) show relative increases in the event type's proportion, while negative values (green) show relative decreases.</small></p>
   </div>
 </div>
 
@@ -2120,6 +2210,7 @@ const precipStats = {
   <div class="card">
     <h2>Economic Impact: Past vs Present</h2>
     ${resize((width) => damageComparisonChart(pastEvents, presentEvents, {width: width}))}
+    <p><small>This chart compares the average annual economic damage from extreme weather events between two time periods. The middle bar shows inflation-adjusted values for fair comparison. The percentage values indicate the relative change from past to present, showing a substantial increase in weather-related damages even after accounting for inflation.</small></p>
   </div>
   <div class="card">
     <h2>Impact Metrics Comparison</h2>
@@ -2151,11 +2242,27 @@ const precipStats = {
             </td>
           </tr>
           <tr>
+            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">Deaths per Event</td>
+            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">${(pastMetrics.totalDeaths / pastMetrics.totalEvents).toFixed(3)}</td>
+            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">${(presentMetrics.totalDeaths / presentMetrics.totalEvents).toFixed(3)}</td>
+            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee; color: ${comparativeAnalysis.deathsPerEventChange > 0 ? '#dc3545' : '#28a745'};">
+              ${comparativeAnalysis.deathsPerEventChange > 0 ? '+' : ''}${comparativeAnalysis.deathsPerEventChange.toFixed(1)}%
+            </td>
+          </tr>
+          <tr>
             <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">Damage/Year (Nominal)</td>
             <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">$${(pastMetrics.totalDamage / 30 / 1e9).toFixed(2)}B</td>
             <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">$${(presentMetrics.totalDamage / 25 / 1e9).toFixed(2)}B</td>
             <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee; color: ${comparativeAnalysis.damagePerYearChange > 0 ? '#dc3545' : '#28a745'};">
               ${comparativeAnalysis.damagePerYearChange > 0 ? '+' : ''}${comparativeAnalysis.damagePerYearChange.toFixed(1)}%
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">Damage per Event (Nominal)</td>
+            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">$${(pastMetrics.totalDamage / pastMetrics.totalEvents / 1e6).toFixed(2)}M</td>
+            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">$${(presentMetrics.totalDamage / presentMetrics.totalEvents / 1e6).toFixed(2)}M</td>
+            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee; color: ${comparativeAnalysis.damagePerEventChange > 0 ? '#dc3545' : '#28a745'};">
+              ${comparativeAnalysis.damagePerEventChange > 0 ? '+' : ''}${comparativeAnalysis.damagePerEventChange.toFixed(1)}%
             </td>
           </tr>
           <tr>
@@ -2167,6 +2274,14 @@ const precipStats = {
             </td>
           </tr>
           <tr>
+            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">Damage per Event (Infl. Adj.)</td>
+            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">$${(pastMetrics.totalDamage * inflationFactor / pastMetrics.totalEvents / 1e6).toFixed(2)}M</td>
+            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">$${(presentMetrics.totalDamage / presentMetrics.totalEvents / 1e6).toFixed(2)}M</td>
+            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee; color: ${comparativeAnalysis.inflationAdjustedDamagePerEventChange > 0 ? '#dc3545' : '#28a745'};">
+              ${comparativeAnalysis.inflationAdjustedDamagePerEventChange > 0 ? '+' : ''}${comparativeAnalysis.inflationAdjustedDamagePerEventChange.toFixed(1)}%
+            </td>
+          </tr>
+          <tr>
             <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">High-Impact Events/Year</td>
             <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">${(pastMetrics.highImpactEvents / 30).toFixed(1)}</td>
             <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">${(presentMetrics.highImpactEvents / 25).toFixed(1)}</td>
@@ -2174,9 +2289,18 @@ const precipStats = {
               ${comparativeAnalysis.highImpactEventsPerYearChange > 0 ? '+' : ''}${comparativeAnalysis.highImpactEventsPerYearChange.toFixed(1)}%
             </td>
           </tr>
+          <tr>
+            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">% High-Impact Events</td>
+            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">${(pastMetrics.highImpactEvents / pastMetrics.totalEvents * 100).toFixed(1)}%</td>
+            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee;">${(presentMetrics.highImpactEvents / presentMetrics.totalEvents * 100).toFixed(1)}%</td>
+            <td style="text-align: left; padding: 10px; border-bottom: 1px solid #eee; color: ${comparativeAnalysis.highImpactEventsPercentageChange > 0 ? '#dc3545' : '#28a745'};">
+              ${comparativeAnalysis.highImpactEventsPercentageChange > 0 ? '+' : ''}${comparativeAnalysis.highImpactEventsPercentageChange.toFixed(1)}%
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
+    <p><small>This table provides both absolute metrics (per year) and normalized metrics (per event) for a fair comparison. The raw per-year metrics can be misleading since the number of recorded events has increased significantly (partly due to improved monitoring and reporting). Normalized metrics reveal whether individual extreme weather events are actually becoming more severe, deadly, or damaging, independent of their increased frequency. This gives a more balanced view of climate change impacts.</small></p>
   </div>
 </div>
 
@@ -2184,6 +2308,7 @@ const precipStats = {
   <div class="card">
     <h2>Locations of Major Weather Events</h2>
     ${resize((width) => interactiveStormEventMap(eventLocations, {width: width}))}
+    <p><small>This interactive map displays locations of significant weather events, with blue dots representing past events (1970-1999) and red dots showing more recent events (2000-2024). The size of each dot corresponds to the property damage caused. Use the controls above the map to filter by event type and adjust the damage threshold. This spatial visualization reveals how extreme weather patterns have changed geographically over time.</small></p>
   </div>
 </div>
 
@@ -2191,6 +2316,7 @@ const precipStats = {
   <div class="card">
     <h2>Weather Events by Type Across Decades</h2>
     ${resize((width) => decadalEventComparison(allStormData, {width: width}))}
+    <p><small>This stacked bar chart shows the distribution of different weather event types by decade. Each color represents a specific event type, allowing you to see how the composition of extreme weather has evolved over time. Note the increasing diversity of recorded event types in more recent decades, reflecting both improved monitoring capabilities and changing climate patterns.</small></p>
   </div>
 </div>
 
@@ -2220,6 +2346,7 @@ const precipStats = {
       </div>
     </div>
     ${resize((width) => precipitationAnomalyMap(precipitation, {width: width}))}
+    <p><small>This map displays global precipitation anomalies, showing areas receiving more rainfall than normal (red) and areas receiving less rainfall than normal (blue). The intensity of color indicates the magnitude of the anomaly. This pattern of increasingly extreme precipitation - with some regions getting much wetter while others experience drought - is consistent with climate change predictions. Wetter areas tend to get wetter, while dry regions often become drier.</small></p>
     <p style="text-align: center; color: #aaaaaa; font-size: 0.9em; margin-top: 1rem;">
       Visualization style inspired by NASA Earth Observatory temperature anomaly maps
     </p>
@@ -2406,17 +2533,23 @@ const presentMetrics = {
   ).length
 };
 
+// Calculate inflation adjustment factor (rough approximation)
+// $1 in 1985 is worth approximately $2.8 in 2023 (updated from 1975 value)
+const inflationFactor = 2.8;
+
 // Calculate percentage changes for key metrics (adjusted for time period differences)
 const comparativeAnalysis = {
   eventsPerYearChange: ((presentMetrics.averageEventsPerYear - pastMetrics.averageEventsPerYear) / pastMetrics.averageEventsPerYear) * 100,
   deathsPerYearChange: (((presentMetrics.totalDeaths / 25) - (pastMetrics.totalDeaths / 30)) / (pastMetrics.totalDeaths / 30)) * 100,
   damagePerYearChange: (((presentMetrics.totalDamage / 25) - (pastMetrics.totalDamage / 30)) / (pastMetrics.totalDamage / 30)) * 100,
-  highImpactEventsPerYearChange: (((presentMetrics.highImpactEvents / 25) - (pastMetrics.highImpactEvents / 30)) / (pastMetrics.highImpactEvents / 30)) * 100
+  highImpactEventsPerYearChange: (((presentMetrics.highImpactEvents / 25) - (pastMetrics.highImpactEvents / 30)) / (pastMetrics.highImpactEvents / 30)) * 100,
+  // New normalized metrics
+  deathsPerEventChange: (((presentMetrics.totalDeaths / presentMetrics.totalEvents) - (pastMetrics.totalDeaths / pastMetrics.totalEvents)) / (pastMetrics.totalDeaths / pastMetrics.totalEvents)) * 100,
+  damagePerEventChange: (((presentMetrics.totalDamage / presentMetrics.totalEvents) - (pastMetrics.totalDamage / pastMetrics.totalEvents)) / (pastMetrics.totalDamage / pastMetrics.totalEvents)) * 100,
+  inflationAdjustedDamagePerEventChange: (((presentMetrics.totalDamage / presentMetrics.totalEvents) - (pastMetrics.totalDamage * inflationFactor / pastMetrics.totalEvents)) / (pastMetrics.totalDamage * inflationFactor / pastMetrics.totalEvents)) * 100,
+  highImpactEventsPercentageChange: (((presentMetrics.highImpactEvents / presentMetrics.totalEvents) - (pastMetrics.highImpactEvents / pastMetrics.totalEvents)) / (pastMetrics.highImpactEvents / pastMetrics.totalEvents)) * 100
 };
 
-// Calculate inflation adjustment factor (rough approximation)
-// $1 in 1985 is worth approximately $2.8 in 2023 (updated from 1975 value)
-const inflationFactor = 2.8; 
 const inflationAdjustedDamageChange = (((presentMetrics.totalDamage / 25) - (pastMetrics.totalDamage * inflationFactor / 30)) / (pastMetrics.totalDamage * inflationFactor / 30)) * 100;
 ```
 
@@ -2446,6 +2579,10 @@ function historicalComparisonChart(pastEvents, presentEvents, {width} = {}) {
   // Select top 10 types
   const top10Types = typeCountsTotal.slice(0, 10).map(d => d.type);
   
+  // Get total events for normalization
+  const pastTotalEvents = pastEvents.length;
+  const presentTotalEvents = presentEvents.length;
+  
   // Prepare data for comparison chart
   const comparisonData = [];
   
@@ -2458,10 +2595,14 @@ function historicalComparisonChart(pastEvents, presentEvents, {width} = {}) {
     const pastPerYear = pastCount / 30; // 30 years in past period
     const presentPerYear = presentCount / 25; // 25 years in present period
     
-    // Calculate percent change
-    const percentChange = presentPerYear > 0 && pastPerYear > 0 
-      ? ((presentPerYear - pastPerYear) / pastPerYear) * 100
-      : presentPerYear > 0 ? Infinity : -100;
+    // Calculate normalized proportions (percentage of total events in each period)
+    const pastProportion = pastCount / pastTotalEvents;
+    const presentProportion = presentCount / presentTotalEvents;
+    
+    // Calculate normalized percent change (adjusted for total event counts)
+    const percentChange = presentProportion > 0 && pastProportion > 0
+      ? ((presentProportion - pastProportion) / pastProportion) * 100
+      : presentProportion > 0 ? Infinity : -100;
     
     comparisonData.push({
       type,
@@ -2469,6 +2610,8 @@ function historicalComparisonChart(pastEvents, presentEvents, {width} = {}) {
       presentCount,
       pastPerYear,
       presentPerYear,
+      pastProportion,
+      presentProportion,
       percentChange
     });
   });
@@ -2478,6 +2621,7 @@ function historicalComparisonChart(pastEvents, presentEvents, {width} = {}) {
   
   return Plot.plot({
     title: "Change in Event Frequency: Past (1970-1999) vs Present (2000-2024)",
+    subtitle: "Normalized by total events in each period for fair comparison",
     width,
     height: 400,
     marginLeft: 150,
@@ -2485,28 +2629,31 @@ function historicalComparisonChart(pastEvents, presentEvents, {width} = {}) {
       label: "Events per Year",
       grid: true
     },
+    y: {
+      label: "Type of event",
+    },
     color: {
       domain: ["1970-1999", "2000-2024"],
       range: ["#8ab9d9", "#ff7676"],
       legend: true
     },
     marks: [
-      Plot.barX(comparisonData.map(d => ({type: d.type, count: d.pastPerYear, period: "1970-1999"})), {
+      Plot.barX(comparisonData.map(d => ({type: d.type, count: d.pastPerYear, proportion: d.pastProportion, period: "1970-1999"})), {
         x: "count",
         y: "type",
         fill: "period",
-        title: d => `${d.type}: ${d.count.toFixed(1)} events/year (1970-1999)`
+        title: d => `${d.type}: ${d.count.toFixed(1)} events/year (${(d.proportion * 100).toFixed(1)}% of all events)`
       }),
-      Plot.barX(comparisonData.map(d => ({type: d.type, count: d.presentPerYear, period: "2000-2024"})), {
+      Plot.barX(comparisonData.map(d => ({type: d.type, count: d.presentPerYear, proportion: d.presentProportion, period: "2000-2024"})), {
         x: "count",
         y: "type",
         fill: "period",
-        title: d => `${d.type}: ${d.count.toFixed(1)} events/year (2000-2024)`
+        title: d => `${d.type}: ${d.count.toFixed(1)} events/year (${(d.proportion * 100).toFixed(1)}% of all events)`
       }),
       Plot.text(comparisonData, {
         x: d => Math.max(d.pastPerYear, d.presentPerYear) + 10,
         y: "type",
-        text: d => d.percentChange === Infinity ? "New" : `${d.percentChange >= 0 ? "+" : ""}${d.percentChange.toFixed(0)}%`,
+        text: d => d.percentChange === Infinity ? "New" : `${d.percentChange >= 0 ? "+" : ""}${d.percentChange.toFixed(0)}%*`,
         fill: d => d.percentChange >= 0 ? "#d62728" : "#2ca02c",
         fontWeight: "bold"
       })
@@ -2541,11 +2688,25 @@ function seventyYearTrendChart(data, {width} = {}) {
     damagePerYear: decade === 2020 ? metrics.damage / 5 : metrics.damage / 10,
   })).sort((a, b) => a.decade.localeCompare(b.decade));
   
+  // Find the maximum count per year to adjust y-axis
+  const maxCountPerYear = d3.max(decadeData, d => d.countPerYear);
+  
+  // Calculate percentage increases
+  const decadeDataWithPercentages = decadeData.map((d, i) => {
+    if (i === 0) {
+      return {...d, percentIncrease: null};
+    }
+    const prevValue = decadeData[i-1].countPerYear;
+    const percentIncrease = ((d.countPerYear - prevValue) / prevValue) * 100;
+    return {...d, percentIncrease};
+  });
+  
   return Plot.plot({
-    title: "Extreme Weather Metrics by Decade (1950-2024)",
+    title: "Seven Decades of Extreme Weather Trends (1950-2024)",
+    subtitle: "Event frequency by decade (average per year) with decade-to-decade change",
     width,
     height: 400,
-    marginRight: 120,
+    marginRight: 90,
     grid: true,
     x: {
       label: "",
@@ -2554,14 +2715,8 @@ function seventyYearTrendChart(data, {width} = {}) {
     y: {
       label: "Events per Year",
       transform: d => d,
-      grid: true
-    },
-    y2: {
-      label: "Deaths per Year",
-      grid: true
-    },
-    color: {
-      legend: true
+      grid: true,
+      domain: [0, maxCountPerYear * 1.15] // Add 15% more space at the top
     },
     marks: [
       Plot.barY(decadeData, {
@@ -2571,21 +2726,22 @@ function seventyYearTrendChart(data, {width} = {}) {
         fillOpacity: 0.7,
         title: d => `${d.decade}: ${d.countPerYear.toFixed(1)} events per year\nTotal events: ${d.count}`
       }),
-      Plot.lineY(decadeData, {
+      // Add line connecting central points of bars
+      Plot.line(decadeData, {
         x: "decade",
-        y: "deathsPerYear",
-        stroke: "red",
-        strokeWidth: 3,
-        y2: true
+        y: "countPerYear",
+        stroke: "#ff6666",
+        strokeWidth: 2,
+        curve: "cardinal"
       }),
-      Plot.dot(decadeData, {
+      // Add percentage increase labels
+      Plot.text(decadeDataWithPercentages.filter(d => d.percentIncrease !== null), {
         x: "decade",
-        y: "deathsPerYear",
-        stroke: "red",
-        fill: "white",
-        r: 5,
-        y2: true,
-        title: d => `${d.decade}: ${d.deathsPerYear.toFixed(1)} deaths per year\nTotal deaths: ${d.deaths}`
+        y: d => d.countPerYear + (maxCountPerYear * 0.03),
+        text: d => `${d.percentIncrease >= 0 ? '+' : ''}${d.percentIncrease.toFixed(0)}%`,
+        fill: d => d.percentIncrease >= 0 ? "#d62728" : "#2ca02c",
+        fontSize: 11,
+        fontWeight: "bold"
       }),
       // Add trend lines
       Plot.ruleY([0])
@@ -2620,8 +2776,8 @@ function damageComparisonChart(pastEvents, presentEvents, {width} = {}) {
   const adjustedChange = ((presentDamagePerYear - inflationAdjustedPastPerYear) / inflationAdjustedPastPerYear) * 100;
   
   return Plot.plot({
-    title: "Average Annual Damage from Extreme Weather",
-    subtitle: "(Comparing Past vs Present, with Inflation Adjustment)",
+    title: "Historical Comparison: Economic Impact of Extreme Weather Events",
+    subtitle: "Comparing past and present annual damages with inflation adjustment (5.6× factor)",
     width,
     height: 300,
     marginLeft: 150,
@@ -2629,6 +2785,9 @@ function damageComparisonChart(pastEvents, presentEvents, {width} = {}) {
       label: "Average Annual Damage (Billions $)",
       transform: d => d / 1e9,
       grid: true
+    },
+    y: {
+      label: "Period",
     },
     color: {
       domain: ["Nominal", "Inflation Adjusted"],

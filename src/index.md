@@ -1,7 +1,7 @@
 ---
 toc: false
 sidebar: false
-pager: false
+pager: true
 ---
 
 <div class="hero">
@@ -14,31 +14,6 @@ pager: false
   <div class="card">
     <h2>Project Overview</h2>
     <p>Welcome to "Climate in Crisis: Visualizing Our Changing Planet," a data visualization portfolio focused on climate change evidence, impacts, and potential solutions. Explore interactive visualizations of global temperature anomalies, Arctic sea ice decline, and more.</p>
-  </div>
-</div>
-
----
-
-## Available Visualizations
-
-<div class="grid grid-cols-2">
-  <div class="card">
-    <h3>Global Temperature Anomalies</h3>
-    <p>Explore historical temperature data showing global warming trends from 1880 to present day. Compare the Northern and Southern hemispheres and analyze temperature distribution by decade.</p>
-    <a href="/global-temperature-dashboard">Explore →</a>
-  </div>
-  <div class="card">
-    <h3>Arctic Sea Ice</h3>
-    <p>Visualization of dramatic Arctic sea ice decline over time, with seasonal patterns and long-term trends showing the impacts of global warming on polar regions.</p>
-    <a href="/arctic-sea-ice-dashboard">Explore →</a>
-  </div>
-  <div class="card">
-    <h3>Extreme Weather Events</h3>
-    <p>Coming soon: Explore the increasing frequency and intensity of extreme weather events related to climate change.</p>
-  </div>
-  <div class="card">
-    <h3>Carbon Emissions</h3>
-    <p>Coming soon: Visualize global carbon emissions by country, sector, and historical trends.</p>
   </div>
 </div>
 

@@ -11,11 +11,14 @@ pager: false
     <a href="/" style="text-decoration: none; color: #666; margin-right: 1rem;">Home</a>
     <a href="/global-temperature-dashboard" style="text-decoration: none; color: #666; margin-right: 1rem;">Global Temperature</a>
     <a href="/arctic-sea-ice-dashboard" style="text-decoration: none; color: #666; margin-right: 1rem;">Arctic Sea Ice</a>
-    <a href="/extreme-weather-dashboard" style="text-decoration: none; color: #666; font-weight: bold; border-bottom: 2px solid #666;">Extreme Weather</a>
+    <a href="/extreme-weather-dashboard" style="text-decoration: none; color: #666; font-weight: bold; border-bottom: 2px solid #666; margin-right: 1rem;">Extreme Weather</a>
+    <a href="/carbon-budget-dashboard" style="text-decoration: none; color: #666;">Carbon Budget</a>
   </div>
 </div>
 
-# Extreme Weather Events 🌪️
+# When Weather Turns Wild 🌪️
+
+Welcome to our exploration of nature's most powerful moments. As our planet warms, extreme weather events are becoming more frequent and intense. This dashboard takes you through storms, floods, droughts, and heat waves that are reshaping our understanding of "normal" weather. These aren't just statistics – they represent real impacts on communities around the world.
 
 <!-- Load and transform the data -->
 
@@ -2194,7 +2197,7 @@ const precipStats = {
   <div class="card">
     <h2>Historical Comparison: Storm Event Frequency (1950-2024)</h2>
     ${resize((width) => seventyYearTrendChart(allStormData, {width: width}))}
-    <p><small>This chart shows how the frequency of extreme weather events has changed over seven decades. The blue bars represent the average number of recorded events per year in each decade. The red line connects the data points and shows the trend across time, with percentage changes between consecutive decades indicated above the line. Note the significant increase in recorded events since the 1990s due to both improved monitoring technology and increasing event frequency.</small></p>
+    <p>This chart reveals the escalating frequency of extreme weather events—a direct consequence of our warming climate. The steep upward trend since the 1990s reflects both improved monitoring technology and a genuine increase in severe weather. Climate scientists have linked this acceleration to rising global temperatures, which provide more energy and moisture for storms. Each decade since 2000 has set new records, with extreme events now occurring at rates that would have been unimaginable in the mid-20th century. This dramatic increase carries profound implications for infrastructure, public safety, and disaster planning.</p>
   </div>
 </div>
 
@@ -2202,7 +2205,7 @@ const precipStats = {
   <div class="card">
     <h2>Past vs Present: Event Type Comparison</h2>
     ${resize((width) => historicalComparisonChart(pastEvents, presentEvents, {width: width}))}
-    <p><small>This comparison shows how the frequency of different types of extreme weather events has changed between two time periods (1970-1999 vs 2000-2024). The percentage values (*) indicate the normalized change between periods, adjusted for the total number of events in each period. This normalization provides a fairer comparison by accounting for increased weather monitoring and reporting over time. Positive values (red) show relative increases in the event type's proportion, while negative values (green) show relative decreases.</small></p>
+    <p>This comparison exposes how climate change is reshaping the types of extreme weather we experience. Heat waves, droughts, and intense precipitation events have increased significantly, exactly as climate models predicted. The normalized percentages show true shifts in weather patterns beyond improved reporting. These changes aren't merely statistical—they represent real threats to human life, agriculture, and infrastructure. Areas previously safe from certain hazards now face new risks, forcing communities to adapt to weather threats they've never experienced before.</p>
   </div>
 </div>
 
@@ -2210,7 +2213,7 @@ const precipStats = {
   <div class="card">
     <h2>Economic Impact: Past vs Present</h2>
     ${resize((width) => damageComparisonChart(pastEvents, presentEvents, {width: width}))}
-    <p><small>This chart compares the average annual economic damage from extreme weather events between two time periods. The middle bar shows inflation-adjusted values for fair comparison. The percentage values indicate the relative change from past to present, showing a substantial increase in weather-related damages even after accounting for inflation.</small></p>
+    <p>The financial toll of climate change becomes clear in this chart. Even after adjusting for inflation, the economic damage from extreme weather has skyrocketed. This represents destroyed homes, damaged infrastructure, lost crops, and disrupted businesses. The increase reflects both more frequent disasters and more valuable property in harm's way. These escalating costs are straining insurance markets, government disaster funds, and community resilience. Without adaptation and mitigation measures, these costs will continue to mount, potentially overwhelming our ability to recover between events.</p>
   </div>
   <div class="card">
     <h2>Impact Metrics Comparison</h2>
@@ -2459,14 +2462,10 @@ const precipStats = {
 
 ## Data Sources and Citations
 
-* Storm Events Database, 1951-2024, National Centers for Environmental Information (NCEI), National Oceanic and Atmospheric Administration (NOAA), accessed April 2024.
-* Global Gridded Precipitation Dataset, National Centers for Environmental Information (NCEI), National Oceanic and Atmospheric Administration (NOAA), accessed April 2024.
-* US Map Data: US Atlas (topojson/us-atlas), accessed April 2024.
-* World Map Data: World Atlas (topojson/world-atlas), accessed April 2024.
-
-## Context
-
-This dashboard visualizes the dramatic changes in extreme weather patterns over a 70+ year period (1951-2024). By comparing historical data from 1970s-1990s with recent data from 2000s-2020s, we can clearly see how climate change has increased the frequency, intensity, and economic impact of extreme weather events. The data reveals significant increases across multiple metrics, including event frequency, deaths, and economic damage, even after adjusting for inflation.
+* [Storm Events Database](https://www.ncdc.noaa.gov/stormevents/), National Centers for Environmental Information (NCEI), National Oceanic and Atmospheric Administration (NOAA), accessed April 2024.
+* [Global Gridded Precipitation Dataset](https://psl.noaa.gov/data/gridded/tables/precipitation.html), National Centers for Environmental Information (NCEI), National Oceanic and Atmospheric Administration (NOAA), accessed April 2024.
+* US Map Data: [US Atlas (topojson/us-atlas)](https://github.com/topojson/us-atlas), accessed April 2024.
+* World Map Data: [World Atlas (topojson/world-atlas)](https://github.com/topojson/world-atlas), accessed April 2024.
 
 ```js
 // Aggregate storm event counts by decade for historical comparison
@@ -2630,7 +2629,7 @@ function historicalComparisonChart(pastEvents, presentEvents, {width} = {}) {
       grid: true
     },
     y: {
-      label: "Type of event",
+      label: "Type of event"
     },
     color: {
       domain: ["1970-1999", "2000-2024"],
@@ -2651,7 +2650,7 @@ function historicalComparisonChart(pastEvents, presentEvents, {width} = {}) {
         title: d => `${d.type}: ${d.count.toFixed(1)} events/year (${(d.proportion * 100).toFixed(1)}% of all events)`
       }),
       Plot.text(comparisonData, {
-        x: d => Math.max(d.pastPerYear, d.presentPerYear) + 10,
+        x: d => Math.max(d.pastPerYear, d.presentPerYear) + 80,
         y: "type",
         text: d => d.percentChange === Infinity ? "New" : `${d.percentChange >= 0 ? "+" : ""}${d.percentChange.toFixed(0)}%*`,
         fill: d => d.percentChange >= 0 ? "#d62728" : "#2ca02c",

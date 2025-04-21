@@ -7,36 +7,28 @@ pager: true
 <div class="hero">
   <h1>Climate Horizons</h1>
   <h2>Visualizing Earth's Transformation</h2>
-  <a href="/global-temperature-dashboard">Explore Temperature Data<span style="display: inline-block; margin-left: 0.25rem;">→</span></a>
+  <a href="/global-temperature-dashboard">Begin Your Journey<span style="display: inline-block; margin-left: 0.25rem;">→</span></a>
 </div>
 
 <div class="content-wrapper">
 
-## Project Introduction
+# Our Planet's Story in Data
 
-Welcome to "Climate in Crisis: Visualizing Our Changing Planet," a data visualization project that tells the interconnected story of climate change through three critical lenses. This project aims to create a streamlined narrative that begins with the fundamental driver - global warming - then shows its direct effects through Arctic sea ice decline, and finally demonstrates the consequences we're experiencing through extreme weather events.
+Welcome to **Climate Horizons** – where numbers tell Earth's most important story. This project lets you explore how our climate is changing through beautiful, easy-to-understand visualizations.
 
-By structuring the dashboards in this sequence, I aim to help users understand not just what's happening, but how these climate phenomena are connected, and ultimately, how human activities influence these patterns. My hope is that through effective data visualization, we can bridge the gap between complex climate science and public understanding, equipping users to recognize how their own actions can support climate solutions.
+Instead of overwhelming you with complex charts and scientific jargon, we've created a journey that connects the dots: from rising temperatures to melting ice to extreme weather. Think of it as a guided tour of our changing planet, showing not just what's happening, but how these changes connect to each other – and to us.
 
-## Current Dashboards
+## Your Climate Journey
 
-The project currently consists of three interconnected dashboards in various stages of development:
+Explore these interconnected dashboards to understand our changing world:
 
-* **Global Temperature Dashboard** - Visualizes temperature anomalies from 1880 to the present, including timeline visualizations showing the warming trend, hemisphere comparisons, and geographic heat maps displaying warming rates across different regions.
+* **[Earth's Warming Story](/global-temperature-dashboard)** - Watch as our planet heats up over time, with some regions warming faster than others. See how temperatures have risen sharply since the 1970s and explore where warming is happening most rapidly.
 
-* **Arctic Sea Ice Dashboard** - Tracks the decline in sea ice extent since 1979, featuring timeline charts of annual minimum ice extent, monthly comparisons across decades, and a geographic visualization comparing historical ice coverage to recent years.
+* **[The Vanishing Ice Cap](/arctic-sea-ice-dashboard)** - Witness the dramatic shrinking of Arctic sea ice – Earth's natural air conditioner. Track how nearly half of the summer ice has disappeared in just a few decades and what this means for our future.
 
-* **Extreme Weather Dashboard** - Examines severe weather event data, revealing increasing frequency and intensity of storms, floods, and heat waves. Includes interactive maps showing event locations and comparative analyses between past and present periods.
+* **[When Weather Turns Wild](/extreme-weather-dashboard)** - Explore how storms, floods, heat waves and droughts are becoming more frequent and intense as our climate changes, with real impacts on communities worldwide.
 
-## Feedback Questions
-
-1.How effective is the current narrative progression from global temperature to ice melt to extreme weather? Does it create a logical flow that helps understand climate change as a system?
-
-2.The extreme weather dashboard includes both raw and normalized metrics to account for improved reporting over time. Is this dual approach helpful, or does it make the presentation too complex?
-
-3.What additional components would be most valuable to add in the "human causes and solutions" section I'm planning to develop?
-
-4.Does the current visualization approach effectively bridge the gap between scientific data and public understanding? What changes might make it more accessible?
+* **[Our Carbon Budget](/carbon-budget-dashboard)** - Discover how much CO₂ we can still emit while limiting warming to 1.5°C or 2°C, and see how quickly we're spending this budget based on emissions from major countries.
 
 </div>
 

@@ -11,13 +11,16 @@ pager: false
     <a href="/" style="text-decoration: none; color: #666; margin-right: 1rem;">Home</a>
     <a href="/global-temperature-dashboard" style="text-decoration: none; color: #666; font-weight: bold; border-bottom: 2px solid #666; margin-right: 1rem;">Global Temperature</a>
     <a href="/arctic-sea-ice-dashboard" style="text-decoration: none; color: #666; margin-right: 1rem;">Arctic Sea Ice</a>
-    <a href="/extreme-weather-dashboard" style="text-decoration: none; color: #666;">Extreme Weather</a>
+    <a href="/extreme-weather-dashboard" style="text-decoration: none; color: #666; margin-right: 1rem;">Extreme Weather</a>
+    <a href="/carbon-budget-dashboard" style="text-decoration: none; color: #666;">Carbon Budget</a>
   </div>
 </div>
 
-# Global Temperature Anomalies 🌡️
+# Earth's Warming Story 🌡️
 
-This dashboard presents global temperature anomalies, which show how Earth's temperature has changed compared to a baseline period. Values represent deviations from the 1951-1980 average temperature in degrees Celsius. Positive values (red) indicate warming, while negative values (blue) show cooling.
+  <section aria-labelledby="intro" class="introduction">
+    <p id="intro">Welcome to our journey through Earth's changing temperatures! This dashboard shows how our planet has warmed over time. Think of temperature "anomalies" as the difference between each year's temperature and what was normal during 1951-1980. When numbers are positive (shown in red), it means warmer than normal. When negative (shown in blue), it means cooler than normal.</p>
+  </section>
 
 <!-- Load and transform the data -->
 
@@ -64,30 +67,32 @@ const minTemp = d3.min(globalValues);
 const maxGlobalTemp = d3.max(globalValues);
 ```
 
-<!-- Cards with key statistics -->
+## The Big Picture: Key Numbers
 
 <div class="grid grid-cols-4">
   <div class="card">
-    <h2>Data Time Range</h2>
+    <h2>Data Timespan</h2>
     <span class="big">${d3.min(years)} - ${d3.max(years)}</span>
-    <p><small>Period covered by this dataset</small></p>
+    <p><small>Our climate story spans nearly 150 years</small></p>
   </div>
   <div class="card">
-    <h2>Recent Global Average</h2>
+    <h2>Recent Warming</h2>
     <span class="big">${recentAverage}°C</span>
-    <p><small>Average temperature anomaly since 2010</small></p>
+    <p><small>How much warmer it's been since 2010</small></p>
   </div>
   <div class="card">
-    <h2>Pre-Industrial Average</h2>
+    <h2>Before Industrial Era</h2>
     <span class="big">${preindustrialAverage}°C</span>
-    <p><small>Average temperature anomaly before 1900</small></p>
+    <p><small>Temperature difference before 1900</small></p>
   </div>
   <div class="card">
-    <h2>Warmest Year on Record</h2>
+    <h2>Hottest Year</h2>
     <span class="big">${maxYear}: ${maxTemp}°C</span>
-    <p><small>Highest annual temperature anomaly</small></p>
+    <p><small>The record-breaking year so far</small></p>
   </div>
 </div>
+
+<p>These cards tell us an important story: Earth was relatively stable before the industrial era, but has warmed significantly in recent decades. The difference between these numbers shows the dramatic shift in our climate.</p>
 
 <!-- Temperature anomaly timeline -->
 
@@ -97,12 +102,12 @@ function temperatureTimeline(data, {width} = {}) {
   const maxAbs = Math.max(Math.abs(minTemp), Math.abs(maxGlobalTemp));
   
   return Plot.plot({
-    title: "Global Temperature Anomalies: 1880-Present (1951-1980 Baseline)",
+    title: "Earth's Temperature Journey: 1880 to Today",
     width,
     height: 300,
     y: {
       grid: true, 
-      label: "Temperature Anomaly (°C)",
+      label: "Temperature Change (°C)",
       domain: [-1, 1.5]
     },
     x: {
@@ -111,10 +116,10 @@ function temperatureTimeline(data, {width} = {}) {
     },
     color: {
       type: "diverging",
-      domain: [-maxAbs, 0, maxAbs],
+      domain: [-maxAbs, maxAbs],
       scheme: "RdBu",
       reverse: true,
-      label: "Temperature Anomaly (°C)"
+      label: "Temperature Change (°C)"
     },
     marks: [
       Plot.ruleY([0], {stroke: "#888", strokeWidth: 1}),
@@ -140,7 +145,7 @@ function temperatureTimeline(data, {width} = {}) {
 <div class="grid grid-cols-1">
   <div class="card">
     ${resize((width) => temperatureTimeline(temperatureData, {width}))}
-    <p><small>This chart shows how global average temperatures have changed over time relative to the 1951-1980 baseline period. The trend line clearly shows the warming pattern, especially since the 1970s. Each point represents an annual average.</small></p>
+    <p>This chart shows Earth's temperature story over time. Each dot is one year. Notice how temperatures stayed relatively stable (with ups and downs) until the 1970s. Then, something changed - temperatures began climbing steadily upward, with more and more red dots appearing. This sharp upward trend coincides with increased fossil fuel use worldwide.</p>
   </div>
 </div>
 
@@ -156,23 +161,23 @@ function hemisphereComparison(data, {width} = {}) {
     legendData.push({
       year: d.year,
       value: d.northernHemisphere,
-      region: "Northern Hemisphere"
+      region: "Northern Half"
     });
     
     legendData.push({
       year: d.year,
       value: d.southernHemisphere,
-      region: "Southern Hemisphere"
+      region: "Southern Half"
     });
   });
 
   return Plot.plot({
-    title: "Northern vs Southern Hemisphere Temperature Changes (1951-1980 Baseline)",
+    title: "North vs South: A Tale of Two Hemispheres",
     width,
     height: 300,
     y: {
       grid: true, 
-      label: "Temperature Anomaly (°C)",
+      label: "Temperature Change (°C)",
       domain: [-0.8, 1.5]
     },
     x: {
@@ -181,8 +186,9 @@ function hemisphereComparison(data, {width} = {}) {
     },
     color: {
       legend: true,
-      domain: ["Northern Hemisphere", "Southern Hemisphere"],
-      range: ["red", "blue"]
+      domain: ["Northern Half", "Southern Half"],
+      // Use distinct colors instead of red/blue to avoid confusion with temperature
+      range: ["darkorange", "steelblue"] 
     },
     marks: [
       Plot.ruleY([0], {stroke: "#888", strokeWidth: 1}),
@@ -200,11 +206,11 @@ function hemisphereComparison(data, {width} = {}) {
 <div class="grid grid-cols-1">
   <div class="card">
     ${resize((width) => hemisphereComparison(temperatureData, {width}))}
-    <p><small>This comparison shows how warming patterns differ between hemispheres. The Northern Hemisphere (red) has generally experienced more pronounced warming than the Southern Hemisphere (blue), likely due to greater land mass and human activity in the north.</small></p>
+    <p>Not all parts of Earth warm at the same rate. This chart reveals a surprising pattern: the Northern Half (orange) is warming faster than the Southern Half (blue). Why? The North has more land, which heats up quickly, while the South has more ocean, which absorbs heat more slowly. Most human activities that produce greenhouse gases also happen in the Northern Hemisphere.</p>
   </div>
 </div>
 
-<!-- Temperature Trend Maps -->
+## The Geography of Warming: Temperature Maps
 
 ```js
 // Fetch country boundaries for the map overlay using fetch for remote URL
@@ -216,23 +222,12 @@ const land = topojson.feature(countries, countries.objects.land);
 ```js
 // Function to plot the trend map
 function plotTrendMap(data, valueColumn, title, {width} = {}) {
-  // Determine appropriate color domain based on the period
-  let colorDomain;
-  
-  if (valueColumn === "trend_1994_2023_C_decade") {
-    // Fixed range for 1994-2023 data which has more extreme values
-    colorDomain = [-1, 0, 1]; // Asymmetric to better show the warming trend
-  } else {
-    // For the longer-term trends (1901-2023)
-    colorDomain = [-1, 0, 1];
-  }
-
-  // Calculate statistics for console debugging
+  // Calculate statistics for domain setting and debugging
   const values = data.map(d => d[valueColumn]).filter(v => !isNaN(v));
-  const maxVal = Math.max(...values);
   const minVal = Math.min(...values);
+  const maxVal = Math.max(...values);
   console.log(`${title} data range: ${minVal.toFixed(2)} to ${maxVal.toFixed(2)} °C/decade`);
-
+  
   return Plot.plot({
     title: title,
     width,
@@ -243,9 +238,9 @@ function plotTrendMap(data, valueColumn, title, {width} = {}) {
       type: "diverging",
       scheme: "RdBu",
       reverse: true,
-      domain: colorDomain,
-      label: "ΔT (°C/decade): ", 
-      legend: true
+      label: "Warming Rate (°C per decade)", 
+      legend: true,
+      domain: [-1, 1]
     },
     marks: [
       Plot.raster(data, {
@@ -255,7 +250,7 @@ function plotTrendMap(data, valueColumn, title, {width} = {}) {
           imageRendering: "pixelated", // Use pixelated for distinct grid cells
           interpolate: "nearest",
           tip: true, 
-          title: (d) => `${d[valueColumn].toFixed(2)} °C/decade`
+          // title: (d) => `${d[valueColumn].toFixed(2)} °C/decade`
       }),
       Plot.graticule({stroke: "gray", strokeOpacity: 0.6, strokeDasharray: "2,2"}),
       Plot.frame(),
@@ -267,86 +262,30 @@ function plotTrendMap(data, valueColumn, title, {width} = {}) {
 
 <div class="grid grid-cols-1">
   <div class="card">
-    ${resize((width) => plotTrendMap(trendData, "trend_1901_2023_C_decade", "Long-term Temperature Trends: 1901-2023", {width}))}
-    <p><small>This map shows the rate of temperature change (°C per decade) over the long term (1901-2023). Red areas have warmed more rapidly, while blue areas have warmed more slowly or cooled.</small></p>
+    ${resize((width) => plotTrendMap(trendData, "trend_1901_2023_C_decade", "The Long View: Temperature Changes (1901-2023)", {width}))}
+    <p>This map shows Earth as a patchwork of warming. The darker the red, the faster that area has warmed over the last century. Notice how warming isn't uniform - some regions have heated up much faster than others. The Arctic (top) shows particularly intense warming, a phenomenon scientists call "Arctic amplification." When you hover over different regions, you can see exactly how quickly temperatures have changed in degrees per decade.</p>
   </div>
   <div class="card">
-    ${resize((width) => plotTrendMap(trendData, "trend_1994_2023_C_decade", "Recent Temperature Trends: 1994-2023", {width}))}
-    <p><small>This map shows more recent temperature trends (1994-2023), revealing areas experiencing the most rapid warming in recent decades. Note the accelerated warming in the Arctic region.</small></p>
+    ${resize((width) => plotTrendMap(trendData, "trend_1994_2023_C_decade", "The Recent Surge: Temperature Changes (1994-2023)", {width}))}
+    <p>Now let's zoom in on recent decades. This map reveals how warming has accelerated since 1994. The pattern is more intense and widespread than the long-term map above. The Arctic region glows bright red, warming at alarming rates - sometimes more than 1°C per decade! This recent acceleration is why scientists are concerned about meeting climate targets set by international agreements.</p>
   </div>
 </div>
 
-<!-- Annual temperature distribution -->
+## Final Considerations
 
-```js
-function temperatureDistribution(data, {width} = {}) {
-  const decades = [];
-  
-  // Group data by decades
-  for (let year = 1880; year <= 2020; year += 10) {
-    const decadeData = data.filter(d => d.year >= year && d.year < year + 10);
-    decades.push({
-      decade: `${year}s`,
-      min: d3.min(decadeData, d => d.global),
-      q1: d3.quantile(decadeData.map(d => d.global), 0.25),
-      median: d3.median(decadeData, d => d.global),
-      q3: d3.quantile(decadeData.map(d => d.global), 0.75),
-      max: d3.max(decadeData, d => d.global)
-    });
-  }
-  
-  // Find max absolute value among medians for a symmetric domain
-  const medians = decades.map(d => d.median);
-  const maxAbsMedian = Math.max(Math.abs(d3.min(medians)), Math.abs(d3.max(medians)));
-  
-  return Plot.plot({
-    title: "Temperature Distribution by Decade (1951-1980 Baseline)",
-    width,
-    height: 300,
-    x: {
-      domain: decades.map(d => d.decade),
-      label: null,
-      tickFormat: d => d.toString()
-    },
-    y: {
-      grid: true,
-      label: "Temperature Anomaly (°C)",
-      domain: [-0.8, 1.5]
-    },
-    color: {
-      type: "diverging",
-      domain: [-maxAbsMedian, 0, maxAbsMedian],
-      scheme: "RdBu",
-      reverse: true,
-      label: "Temperature Anomaly (°C)"
-    },
-    marks: [
-      Plot.ruleY([0], {stroke: "#888", strokeWidth: 1}),
-      Plot.boxY(decades, {
-        x: "decade",
-        y1: "min",
-        y2: "max",
-        median: "median",
-        q1: "q1",
-        q3: "q3",
-        fill: "median",
-        z: null
-      })
-    ]
-  });
-}
-```
+Climate data tells a clear story: Earth is warming at an unprecedented rate in recorded history, primarily due to human activities. The global temperature record shows a distinct acceleration since the 1970s that coincides with increased greenhouse gas emissions.
 
-<div class="grid grid-cols-1">
-  <div class="card">
-    ${resize((width) => temperatureDistribution(temperatureData, {width}))}
-    <p><small>This box plot shows how temperature anomalies have been distributed within each decade. The boxes show the interquartile range (middle 50% of values), with the line representing the median temperature anomaly. The shift toward warmer temperatures in recent decades is clearly visible.</small></p>
-  </div>
-</div>
+Key takeaways from this dashboard:
+- Global temperatures have risen approximately 1.2°C above pre-industrial levels
+- The warming is not uniform - the Arctic, land areas, and Northern Hemisphere are warming faster
+- The rate of warming has accelerated in recent decades
+- The pattern of warming matches what climate models predict from greenhouse gas increases
+
+This data underscores the urgency of reducing greenhouse gas emissions to limit future warming and its associated impacts on weather patterns, sea level rise, and ecosystems worldwide.
 
 ## Data Sources and Citations
 
 *   GISTEMP Team, 2025: GISS Surface Temperature Analysis (GISTEMP), version 4. NASA Goddard Institute for Space Studies. Dataset accessed 2024-07-30 at [https://data.giss.nasa.gov/gistemp/](https://data.giss.nasa.gov/gistemp/).
-*   Lenssen, N., G.A. Schmidt, M. Hendrickson, P. Jacobs, M. Menne, and R. Ruedy, 2024: A GISTEMPv4 observational uncertainty ensemble. *J. Geophys. Res. Atmos.*, **129**, no. 17, e2023JD040179, doi:[10.1029/2023JD040179](https://doi.org/10.1029/2023JD040179).
-*   Gridded Trend Data (used for maps): Calculated from [Global_TAVG_Gridded_5.nc](https://data.giss.nasa.gov/pub/gistemp/gistemp_5x5_v1/Global_TAVG_Gridded_5.nc) (derived from GISTEMP v4).
+*   Lenssen, N., G.A. Schmidt, M. Hendrickson, P. Jacobs, M. Menne, and R. Ruedy, 2024: A GISTEMPv4 observational uncertainty ensemble. *J. Geophys. Res. Atmos.*, **129**, no. 17, e2023JD040179, doi: [10.1029/2023JD040179](https://doi.org/10.1029/2023JD040179).
+*   Gridded Trend Data (used for maps): Calculated from `Global_TAVG_Gridded_5.nc` (derived from GISTEMP v4).
 *   Country Boundaries: [Natural Earth](https://www.naturalearthdata.com/) via [world-atlas](https://github.com/topojson/world-atlas).

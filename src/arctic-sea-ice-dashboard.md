@@ -11,11 +11,14 @@ pager: false
     <a href="/" style="text-decoration: none; color: #666; margin-right: 1rem;">Home</a>
     <a href="/global-temperature-dashboard" style="text-decoration: none; color: #666; margin-right: 1rem;">Global Temperature</a>
     <a href="/arctic-sea-ice-dashboard" style="text-decoration: none; color: #666; font-weight: bold; border-bottom: 2px solid #666; margin-right: 1rem;">Arctic Sea Ice</a>
-    <a href="/extreme-weather-dashboard" style="text-decoration: none; color: #666;">Extreme Weather</a>
+    <a href="/extreme-weather-dashboard" style="text-decoration: none; color: #666; margin-right: 1rem;">Extreme Weather</a>
+    <a href="/carbon-budget-dashboard" style="text-decoration: none; color: #666;">Carbon Budget</a>
   </div>
 </div>
 
-# Arctic Sea Ice Decline ❄️
+# The Vanishing Ice Cap ❄️
+
+Welcome to the Arctic, Earth's frozen crown that is visibly disappearing. This dashboard tracks the dramatic decline of sea ice that covers the Arctic Ocean. Each year, this ice grows in winter and shrinks in summer – but as our planet warms, we're seeing less ice year after year. Think of it as Earth losing its natural air conditioner.
 
 <!-- Load and transform the data -->
 
@@ -175,30 +178,32 @@ const yearsToIceFree = currentExtent !== "N/A" && trend !== 0
 const iceFreeYear = currentYear + (yearsToIceFree > 0 ? yearsToIceFree : 0);
 ```
 
-<!-- Cards with key statistics -->
+## The Arctic Scorecard
 
 <div class="grid grid-cols-4">
   <div class="card">
-    <h2>Current Extent (${currentYear})</h2>
+    <h2>Ice Today</h2>
     <span class="big">${currentExtent} million km²</span>
-    <p>vs ${baselineAverage} million km² (1979-2000 avg)</p>
+    <p>vs ${baselineAverage} million km² in the past</p>
   </div>
   <div class="card">
-    <h2>Record Minimum</h2>
+    <h2>Record Low Year</h2>
     <span class="big">${typeof minExtent === 'number' ? minExtent.toFixed(2) : 'N/A'} million km²</span>
     <p>${minYear} (${startValue ? ((minExtent - startValue)/startValue*100).toFixed(1) : 'N/A'}% of 1979)</p>
   </div>
   <div class="card">
-    <h2>Decline Rate</h2>
+    <h2>Ice We're Losing</h2>
     <span class="big">${typeof trend === 'number' ? Math.abs(trend).toFixed(2) : 'N/A'} million km²</span>
-    <p>per decade (${percentDecline}% since 1979)</p>
+    <p>each decade (${percentDecline}% since 1979)</p>
   </div>
   <div class="card">
-    <h2>Projected Ice-Free</h2>
+    <h2>First Ice-Free Summer?</h2>
     <span class="big">${iceFreeYear}</span>
-    <p>at current rate of decline</p>
+    <p>if current melting continues</p>
   </div>
 </div>
+
+<p>These numbers tell a sad story: In just a few decades, we have lost nearly half of the Arctic's summer ice cover – an area roughly the size of India. If this trend continues, we are heading for ice-free Arctic summers within our lifetimes, something that hasn't happened in thousands of years.</p>
 
 <!-- Annual Minimum Timeline -->
 
@@ -230,7 +235,7 @@ function iceExtentTimeline(data, {width} = {}) {
       Plot.ruleY([1], {stroke: "#888", strokeWidth: 1, strokeDasharray: "4,4"}),
       Plot.text([1.2], {
         x: 2023,
-        y: 3.2,
+        y: 1.2,
         text: ["Ice-free threshold (1 million km²)"],
         fontSize: 10,
         fill: "#888"
@@ -306,7 +311,7 @@ function iceExtentTimeline(data, {width} = {}) {
 <div class="grid grid-cols-1">
   <div class="card">
     ${resize((width) => iceExtentTimeline(septemberTransformed, {width}))}
-    <p><small>This chart tracks the September sea ice extent (annual minimum) since satellite monitoring began in 1979. The dotted line shows the linear trend of decline, while the red point highlights the record minimum year. The 1 million km² threshold represents the commonly accepted definition of an "ice-free" Arctic Ocean.</small></p>
+    <p>This dramatic downward trend shows one of climate change's most visible consequences. Since satellite monitoring began in 1979, we've lost nearly half of the Arctic's summer ice cover. The dotted line shows the alarming rate of decline: approximately ${Math.abs(trend).toFixed(2)} million square kilometers every decade. If this trend continues, we're heading toward ice-free Arctic summers by mid-century—something Earth hasn't experienced in over 100,000 years. This massive loss acts as a climate feedback loop, as dark ocean water absorbs more heat than reflective ice, accelerating warming.</p>
   </div>
 </div>
 
@@ -409,7 +414,7 @@ function monthlyComparison({width} = {}) {
 <div class="grid grid-cols-1">
   <div class="card">
     ${resize((width) => monthlyComparison({width}))}
-    <p><small>This chart compares the average sea ice extent for each month across three time periods: 1979-1989 (blue), 2000-2010 (yellow), and 2015-2023 (red). The natural cycle shows maximum ice in March and minimum in September, with significant decline across all months in recent decades. The greatest losses have occurred during summer and fall months.</small></p>
+    <p>This chart reveals how Arctic ice has diminished throughout the entire year. While the natural seasonal cycle remains (maximum ice in March, minimum in September), ice extent has significantly declined across all seasons. The gap between the blue line (1979-1989) and red line (2015-2023) represents millions of square kilometers of missing ice. Summer and fall months show the most dramatic losses, with September ice extent now approximately 40% smaller than it was in the 1980s. These year-round changes are disrupting ecosystems, opening new shipping routes, and altering global weather patterns.</p>
   </div>
 </div>
 
@@ -604,14 +609,26 @@ function arcticIceVisualization({width} = {}) {
 <div class="grid grid-cols-1">
   <div class="card">
     ${resize((width) => arcticIceVisualization({width}))}
-    <p><small>This map visualizes the geographic extent of Arctic sea ice during September (annual minimum) by comparing the average extent from 1979-1989 (blue line) to 2015-2023 (red line). The visualization shows how the ice edge has retreated northward, opening previously ice-covered waters along the coastlines of Russia, Canada, and Alaska. This spatial perspective illustrates the dramatic reduction in ice coverage that affects navigation, wildlife habitats, and indigenous communities.</small></p>
+    <p>This map shows the geographic reality of Arctic ice loss. The blue line shows the average September ice extent from 1979-1989, while the red line shows the average from 2015-2023. The retreat is dramatic—millions of square kilometers of ocean that were once ice-covered are now open water. This transformation has profound consequences: from altered ocean circulation and weather patterns to disrupted wildlife habitats and indigenous communities. It also creates new geopolitical tensions as previously inaccessible resources and shipping routes open up. The rapid disappearance of Arctic sea ice serves as a warning sign of the cascading effects of climate change that we'll explore in the next sections.</p>
   </div>
 </div>
 
 
+## Final Considerations
+
+The Arctic sea ice data presents one of the most visible and dramatic signs of climate change. While some natural variability occurs from year to year, the long-term declining trend is unmistakable and accelerating.
+
+Key takeaways from this dashboard:
+- Arctic sea ice is declining in all seasons, but summer losses are most dramatic
+- The rate of decline has been accelerating since 2000
+- At current melting rates, the Arctic could experience ice-free summers within the next few decades
+- The loss of sea ice creates a feedback loop that amplifies warming as dark ocean water absorbs more heat than reflective ice
+
+These changes have profound implications for global climate patterns, Arctic ecosystems, indigenous communities, shipping routes, and resource extraction. The Arctic is effectively serving as an early warning system for the broader climate changes occurring worldwide.
+
 ## Data Sources and Citations
 
 * National Snow and Ice Data Center (NSIDC). (2023). Sea Ice Index, Version 3. Boulder, Colorado USA. https://nsidc.org/data/g02135/versions/3
-* Stroeve, J., & Notz, D. (2018). Changing state of Arctic sea ice across all seasons. Environmental Research Letters, 13(10), 103001.
-* Screen, J. A., & Simmonds, I. (2010). The central role of diminishing sea ice in recent Arctic temperature amplification. Nature, 464(7293), 1334-1337.
+* Stroeve, J., & Notz, D. (2018). Changing state of Arctic sea ice across all seasons. Environmental Research Letters, 13(10), 103001. doi: [10.1088/1748-9326/aade56](https://doi.org/10.1088/1748-9326/aade56).
+* Screen, J. A., & Simmonds, I. (2010). The central role of diminishing sea ice in recent Arctic temperature amplification. Nature, 464(7293), 1334-1337. doi: [10.1038/nature09051](https://doi.org/10.1038/nature09051).
 * IPCC. (2023). Climate Change 2023: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change.
